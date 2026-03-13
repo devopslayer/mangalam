@@ -252,6 +252,11 @@ nav button:hover {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
 }
 
+.cart-image-item.active {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
 .cart-content {
   display: flex;
   flex-direction: column;
@@ -430,11 +435,24 @@ nav button:hover {
 
 .trusters .trusters-logos {
   width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.trusters-track {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
   gap: 40px;
+  width: max-content;
+  animation: trusters-scroll 20s linear infinite;
+}
+
+.trusters-track img {
+  height: 40px;
+  object-fit: contain;
+}
+
+.trusters-track:hover {
+  animation-play-state: paused;
 }
 
 /* Technical Specifications Styles */
@@ -641,12 +659,12 @@ nav button:hover {
   opacity: 0.8;
 }
 
-.faq-question.active{
-  color:#2b3990;
+.faq-question.active {
+  color: #2b3990;
 }
 
-.faq-question.active i{
-  color:#2b3990;
+.faq-question.active i {
+  color: #2b3990;
 }
 
 .faq-answer {
@@ -1008,23 +1026,26 @@ nav button:hover {
 }
 
 .reviews-list {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.reviews-track {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  overflow-y: auto;
-  gap: 20px;
+  gap: 30px;
+  width: max-content;
+  animation: reviews-scroll 30s linear infinite;
 }
 
-.reviews-list::-webkit-scrollbar {
-  height: 8px;
+.reviews-track:hover {
+  animation-play-state: paused;
 }
 
-.reviews-list::-webkit-scrollbar-thumb {
-  background-color: transparent;
-  border-radius: 10px;
-}
-
-.reviews-list .review-card {
+.review-card {
+  flex: 0 0 350px;
+  width: 350px;
+  min-width: 260px;
   display: flex;
   flex-direction: column;
   background-color: var(--background-color);
@@ -1034,33 +1055,33 @@ nav button:hover {
   gap: 12px;
 }
 
-.reviews-list .review-card img {
+.review-card img {
   width: 24px;
   height: 24px;
   object-fit: contain;
   margin-bottom: 8px;
 }
 
-.reviews-list .review-card h3 {
+.review-card h3 {
   width: 300px;
   font-size: 18px;
   font-weight: 500;
 }
 
-.reviews-list .review-card p {
+.review-card p {
   font-size: 14px;
   font-weight: 400;
   overflow-wrap: break-word;
   margin-bottom: 24px;
 }
 
-.reviews-list .review-card div {
+.review-card div {
   display: flex;
   align-items: flex-start;
   gap: 12px;
 }
 
-.reviews-list .review-card div img {
+.review-card div img {
   width: 40px;
   height: 40px;
   object-fit: cover;
@@ -1068,7 +1089,7 @@ nav button:hover {
   border-radius: 50%;
 }
 
-.reviews-list .review-card div div {
+.review-card div div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1076,12 +1097,12 @@ nav button:hover {
   gap: 4px;
 }
 
-.reviews-list .review-card div div h5 {
+.review-card div div h5 {
   font-size: 14px;
   font-weight: 500;
 }
 
-.reviews-list .review-card div div p {
+.review-card div div p {
   font-size: 12px;
   font-weight: 400;
   overflow-wrap: break-word;
@@ -1657,6 +1678,24 @@ nav button:hover {
   }
 }
 
+@keyframes trusters-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes reviews-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* Responsive Styles */
 @media (min-width: 1600px) {
   section {
@@ -1718,6 +1757,25 @@ nav button:hover {
     width: 100%;
   }
 
+  .trusters-track {
+    gap: 35px;
+    animation-duration: 18s;
+  }
+
+  .trusters-track img {
+    height: 38px;
+  }
+
+  .reviews-track {
+    gap: 25px;
+    animation-duration: 26s;
+  }
+
+  .review-card {
+    flex: 0 0 320px;
+    width: 320px;
+  }
+
   .cart-image-lists {
     justify-content: space-between;
   }
@@ -1745,7 +1803,6 @@ nav button:hover {
   }
 
   .applications-content,
-  .reviews-list,
   .portfolio-cards {
     overflow-x: auto;
   }
@@ -1773,9 +1830,23 @@ nav button:hover {
     width: 100%;
   }
 
-  .trusters .trusters-logos img {
-    width: 60px;
-    height: 30px;
+  .trusters-track {
+    gap: 30px;
+    animation-duration: 16s;
+  }
+
+  .trusters-track img {
+    height: 34px;
+  }
+
+  .reviews-track {
+    gap: 20px;
+    animation-duration: 22s;
+  }
+
+  .review-card {
+    flex: 0 0 280px;
+    width: 280px;
   }
 
   .process-steps-card .process-steps-card-header ul li {
@@ -1862,9 +1933,18 @@ nav button:hover {
     bottom: 80px;
   }
 
-  .trusters .trusters-logos img {
-    width: 30px;
-    height: 15px;
+  .trusters-track {
+    gap: 20px;
+    animation-duration: 14s;
+  }
+
+  .trusters-track img {
+    height: 28px;
+  }
+
+  .reviews-track {
+    gap: 15px;
+    animation-duration: 20s;
   }
 
   .portfolio-cta {
@@ -1926,10 +2006,6 @@ nav button:hover {
   .footer-header h4 {
     font-size: 16px;
     width: 300px;
-  }
-
-  .trusters .trusters-logos {
-    gap: 0;
   }
 }
 
