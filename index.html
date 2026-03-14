@@ -34,17 +34,25 @@
   <body>
     <!-- Header section -->
     <header>
-      <div>
+      <div class="logo">
         <img
           src="assets/images/logo.png"
           alt="Mangalam Pipes Private Limited"
         />
       </div>
+      <div class="hamburger">
+        <i class="fa fa-bars"></i>
+      </div>
       <nav>
-        <ul>
+        <ul class="nav-menu">
           <li><a href="#">About Us</a></li>
-          <li>
+          <li class="dropdown">
             <a href="#">Products <i class="fa fa-angle-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Product 1</a></li>
+              <li><a href="#">Product 2</a></li>
+              <li><a href="#">Product 3</a></li>
+            </ul>
           </li>
           <li><button>Contact Us</button></li>
         </ul>
@@ -266,7 +274,7 @@
             </p>
           </div>
           <div class="quote-card">
-            <i class="fa fas fas fa-map-pin"></i>
+            <i class="fa fas fa-map-pin"></i>
             <h3>Exceptional Flexibility & Durability</h3>
             <p>
               HDPE pipes resist a wide range of chemicals, acids, and alkalis.

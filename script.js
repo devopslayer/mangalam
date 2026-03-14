@@ -122,3 +122,52 @@ prevBtn.addEventListener("click", () => {
 });
 
 updateActiveThumbnail();
+
+/* Header scroll behavior */
+let lastScrollTop = 0;
+const header = document.querySelector("header");
+const cartSection = document.querySelector(".cart-section");
+
+window.addEventListener("scroll", () => {
+  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+  const firstFold = cartSection.offsetHeight;
+
+  // Inside first fold → header always visible
+  if (currentScroll <= firstFold) {
+    header.classList.remove("hide-header");
+  } else {
+    if (currentScroll > lastScrollTop) {
+      // scrolling down
+      header.classList.remove("hide-header");
+    } else {
+      // scrolling up
+      header.classList.add("hide-header");
+    }
+  }
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
+
+/* Mobile Navigation Toggle */
+const hamburger = document.querySelector(".hamburger");
+const nav = document.querySelector("nav");
+
+hamburger.addEventListener("click", () => {
+  nav.classList.toggle("active");
+});
+
+const dropdown = document.querySelector(".dropdown");
+const dropdownMenu = document.querySelector(".dropdown-menu");
+
+dropdown.addEventListener("click", () => {
+  dropdown.classList.toggle("active");
+  dropdownMenu.classList.toggle("active");
+});
+
+/* Precaution from empty links */
+const emptyLinks = document.querySelectorAll('a[href="#"]');
+
+emptyLinks.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+  });
+});

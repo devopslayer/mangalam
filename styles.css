@@ -41,9 +41,11 @@ section {
 
 /* Header Styles */
 header {
-  height: 77px;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
+  height: 77px;
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -52,6 +54,12 @@ header {
   background-color: var(--background-color);
   color: var(--text-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+header.hide-header {
+  transform: translateY(-100%);
 }
 
 nav {
@@ -88,6 +96,49 @@ nav button {
 
 nav button:hover {
   opacity: 0.8;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  text-align: end;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background: white;
+  width: max-content;
+  display: none;
+  flex-direction: column;
+}
+
+.dropdown-menu li {
+  padding: 10px 15px;
+}
+
+.dropdown-menu.active {
+  display: flex;
+}
+
+.dropdown i{
+  transform: rotate(360deg);
+  transition: transform 0.3s ease;
+}
+
+.dropdown.active i{
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
 }
 
 /* Main Styles */
@@ -1844,11 +1895,6 @@ nav button:hover {
     animation-duration: 22s;
   }
 
-  .review-card {
-    flex: 0 0 280px;
-    width: 280px;
-  }
-
   .process-steps-card .process-steps-card-header ul li {
     font-size: 10px;
     padding: 5px;
@@ -1890,8 +1936,47 @@ nav button:hover {
     text-wrap: nowrap;
   }
 
-  nav ul {
-    display: none;
+  h3 {
+    font-size: 14px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  nav {
+    position: fixed;
+    top: 77px;
+    left: 100%;
+    height: 100vh;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 30px 20px;
+    transition: left 0.3s ease;
+    z-index: 999;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  nav.active {
+    left: 0;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .dropdown-menu {
+    position: static;
+    padding-top: 15px;
+    width: 100%;
+    gap: 5px;
   }
 
   .cart-image-card {
