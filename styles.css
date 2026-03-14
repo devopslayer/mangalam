@@ -31,6 +31,7 @@ header > * {
 
 /* Section Styles */
 section {
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding: 100px;
@@ -1836,6 +1837,16 @@ nav button:hover {
   }
 }
 
+@media (min-width: 801px) and (max-width: 1023px) {
+  .process-steps-card .process-steps-card-header ul li:not(.item-active) {
+    display: none;
+  }
+
+  .process-steps-card .process-steps-card-header ul li::after {
+    display: none;
+  }
+}
+
 @media (max-width: 800px) {
   section {
     padding: 80px 48px;
@@ -1922,6 +1933,16 @@ nav button:hover {
   }
 }
 
+@media (min-width: 426px) and (max-width: 767px) {
+  main, footer {
+    width: max-content;
+  }
+
+  footer section, footer .footer-bottom {
+    width: 128%;
+  }
+}
+
 @media (max-width: 425px) {
   section {
     padding: 60px 32px;
@@ -1998,6 +2019,21 @@ nav button:hover {
     text-wrap: nowrap;
   }
 
+  .cart-content h2 {
+    font-size: 22px;
+  }
+
+  .cart-cta {
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .cart-cta button {
+    width: 100%;
+    justify-content: center;
+  }
+
   .portfolio-cta p,
   .portfolio-container p,
   .reviews-container p,
@@ -2018,6 +2054,10 @@ nav button:hover {
     bottom: 80px;
   }
 
+  .faq-cta .faq-cta-form {
+    flex-direction: column;
+  }
+
   .trusters-track {
     gap: 20px;
     animation-duration: 14s;
@@ -2034,7 +2074,12 @@ nav button:hover {
 
   .portfolio-cta {
     flex-direction: column;
-    gap: 20px;
+    text-align: left;
+    gap: 12px;
+  }
+
+  .portfolio-cta:last-child div, .portfolio-cta button {
+    width: 100%;
   }
 
   .downloads-card-container li {
@@ -2057,40 +2102,17 @@ nav button:hover {
     flex-direction: column;
   }
 
+  .footer-header h4 {
+    font-size: 16px;
+    width: 300px;
+  }
+
   .footer-bottom p {
     font-size: 10px;
   }
 
   .footer-links {
     flex-direction: column;
-  }
-}
-
-@media (max-width: 375px) {
-  .cart-content h2 {
-    font-size: 22px;
-  }
-
-  .cart-cta {
-    flex-direction: column;
-    width: 100%;
-    align-items: flex-start;
-  }
-
-  .cart-cta button {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .portfolio-cta {
-    flex-direction: column;
-    gap: 12px;
-    text-align: center;
-  }
-
-  .footer-header h4 {
-    font-size: 16px;
-    width: 300px;
   }
 }
 
